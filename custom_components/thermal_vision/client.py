@@ -35,7 +35,7 @@ class ThermalVisionClient(object):
         else:
             self._person_detected = None
 
-        self._pixels = list(map(lambda x: float(x), decoded["data"].split(",")))
+        self._pixels = list(map(lambda x: float(x) / 10.0, decoded["data"].split(",")))
 
     def get_temp(self):
         return self._temp

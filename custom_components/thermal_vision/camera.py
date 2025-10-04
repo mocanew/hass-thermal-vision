@@ -240,7 +240,7 @@ class ThermalVisionCamera(Camera):
                     response = await websession.get(urljoin(self._host, "raw"))
                     jsonResponse = await response.json()
                     if jsonResponse:
-                        data = jsonResponse["data"].split(",")
+                        data = map(lambda x: float(x) / 10, jsonResponse["data"].split(","))
                         self._setup_range(data)
                         self._default_image = self._camera_image(data)
 
